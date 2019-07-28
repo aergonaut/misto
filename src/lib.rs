@@ -8,15 +8,18 @@
 //!
 //! ## Quick Start
 //!
-//! ```no_run
-//! let mix_manifest = mist::Manifest::from_file("public/mix-manifest.json");
+//! ```ignore
+//! let mix_manifest = misto::Manifest::from_file("public/mix-manifest.json");
 //! let mut tera = compile_templates!("templates/**/*");
 //! misto::tera::configure(tera, mix_manifest);
 //! ```
+//!
+//! This example assumes you are using Tera.
 
 #![deny(missing_docs, unsafe_code, clippy::missing_docs_in_private_items)]
 
 pub mod manifest;
+pub use manifest::Manifest;
 
 #[cfg(feature = "tera")]
 pub mod tera;

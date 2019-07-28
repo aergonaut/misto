@@ -17,7 +17,7 @@ fn make_asset_path_function(manifest: crate::manifest::Manifest) -> t::GlobalFn 
         match args.get("name") {
             Some(val) => match t::from_value::<String>(val.clone()) {
                 Ok(name) => Ok(t::to_value(
-                    manifest.asset_path(&name).ok_or("Unknown asset"),
+                    manifest.asset_path(&name).ok_or("Unknown asset")?,
                 )?),
                 Err(e) => Err(e.into()),
             },

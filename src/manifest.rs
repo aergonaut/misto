@@ -28,11 +28,39 @@ impl Manifest {
 
         let entries = serde_json::from_reader(reader)?;
 
-        Ok(Manifest { entries: entries })
+        Ok(Manifest::new(entries))
+    }
+
+    /// Construct a new `Manifest` from the given `entries`. This function should normally not be
+    /// used. Use `from_file` instead.
+    pub fn new(entries: HashMap<String, String>) -> Manifest {
+        Manifest { entries: entries }
     }
 
     /// Translate a given asset `name` into a versioned asset path using the manifest.
     pub fn asset_path(&self, name: &str) -> Option<&str> {
         self.entries.get(name).map(|p| p.as_str())
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use std::collections::HashMap;
+
+    #[test]
+    fn test_asset_path() {
+        let mut entries = HashMap::new();
+        entries.insert(
+            "js/app.js".to_owned(),
+            "public/js/app-06fd465b135293c687c152ec96567f5d.js".to_owned(),
+        );
+
+        let manifest = Manifest::new(entries);
+
+        assert_eq!(
+            manifest.asset_path("js/app.js"),
+            Some("public/js/app-06fd465b135293c687c152ec96567f5d.js")
+        )
     }
 }
