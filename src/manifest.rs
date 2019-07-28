@@ -22,7 +22,7 @@ impl Manifest {
     /// # Errors
     ///
     /// Errors if the file path could not be read.
-    pub fn from_file<I: AsRef<Path>>(path: I) -> Result<Manifest, Box<Error>> {
+    pub fn from_file<I: AsRef<Path>>(path: I) -> Result<Manifest, Box<dyn Error>> {
         let file = File::open(path)?;
         let reader = BufReader::new(file);
 
