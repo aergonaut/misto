@@ -2,7 +2,7 @@
 fn test_tera_integration() {
     let mut tera = tera::compile_templates!("tests/templates/**/*");
 
-    let manifest = misto::Manifest::from_file(&"tests/mix-manifest.json".to_owned()).unwrap();
+    let manifest = misto::Manifest::from_file("tests/mix-manifest.json").unwrap();
     misto::tera::configure(&mut tera, manifest);
 
     let rendered = tera
