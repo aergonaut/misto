@@ -1,0 +1,1 @@
+<script type="text/javascript" src="{{ asset_path(name="bad.js") | safe }}"></script>

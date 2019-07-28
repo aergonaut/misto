@@ -21,7 +21,7 @@ fn make_asset_path_function(manifest: crate::manifest::Manifest) -> t::GlobalFn 
                 )?),
                 Err(e) => Err(e.into()),
             },
-            None => Err("Error fetching asset path".into()),
+            None => Err("Missing argument `name`".into()),
         }
     })
 }
