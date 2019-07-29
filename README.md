@@ -19,9 +19,10 @@ misto = "^0.1.0"
 
 ## Framework Integration
 
-Misto supports Tera and Handlebars via optional features. To enable either of
-these integrations, specify the `tera` or `handlebars` features when installing
-the crate
+Misto supports the [Tera][] template language via the optional feature `tera`.
+To enable Tera integration, add the `tera` feature to your `Cargo.toml`.
+
+[tera]: https://tera.netlify.com/
 
 ```toml
 [dependencies]

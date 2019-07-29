@@ -3,6 +3,14 @@
 //! To enable Tera integration, specify the `tera` feature when installing.
 //!
 //! Then, configure your Tera instance using the `configure` function.
+//!
+//! # Helpers
+//!
+//! Misto provides the following helper functions that you can use in your Tera templates:
+//!
+//! ## `asset_path(name)`
+//!
+//! Takes the source path of an asset as `name` and returns the path to compiled to asset.
 
 use tera as t;
 
