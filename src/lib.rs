@@ -2,18 +2,32 @@
 //!
 //! Misto is a crate providing integration between [Laravel Mix][] and Rust web frameworks. It is
 //! framework agnostic, providing a set of tools that can be used to integrate with any framework.
-//! It can also provide helpers to integrate with popular template systems Tera.
+//! It can also provide helpers to integrate with popular template system Tera.
 //!
 //! [laravel mix]: https://laravel-mix.com/
+//!
+//! ## Installation
+//!
+//! Add this to your `Cargo.toml`
+//!
+//! ```toml
+//! [dependencies]
+//! misto = { version = "^0.1.0", features = ["tera"] }
+//! ```
+//!
 //!
 //! ## Quick Start
 //!
 //! This example assumes you are using Tera.
 //!
-//! ```ignore
-//! let mix_manifest = misto::Manifest::from_file("public/mix-manifest.json");
+//! ```no_run
+//! # use tera::compile_templates;
+//! # fn main() -> Result<(), Box<dyn std::error::Error>> {
+//! let mix_manifest = misto::Manifest::from_file("public/mix-manifest.json")?;
 //! let mut tera = compile_templates!("templates/**/*");
-//! misto::tera::configure(tera, mix_manifest);
+//! misto::tera::configure(&mut tera, mix_manifest);
+//! # Ok(())
+//! # }
 //! ```
 //!
 //! Then in your template, you can use the `asset_path` helper function to resolve an asset to its
